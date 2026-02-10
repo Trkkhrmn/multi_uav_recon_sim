@@ -378,7 +378,6 @@ python3 scripts/scenario_analysis.py
 
 | Directory | Contents |
 |-----------|----------|
-| `docs/overview/` | Project description, CV / LinkedIn summary |
 | `docs/architecture/` | MRTA visualization, multi-drone control |
 | `docs/missions/` | Scout and satellite scout parameters |
 | `docs/sensors/` | Camera setup and topics |
