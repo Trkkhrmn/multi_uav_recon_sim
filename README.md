@@ -32,7 +32,7 @@ An end-to-end multi-UAV reconnaissance and task allocation pipeline built on **R
 **4 scout (leader) drones** fly to their assigned zones at 80 m altitude, detect colored ground targets using downward-facing cameras, and compute world coordinates via **pinhole camera model + ground-plane ray intersection**. A central **fusion node** merges detections from all four scouts using distance-based centroid averaging to produce a single, noise-filtered target map. **6 worker drones** are then assigned to those targets by an **MRTA (Multi-Robot Task Allocation)** node using a greedy nearest-first strategy. Each worker flies to its target, descends, drops a payload, and either proceeds to the next target or returns to base for resupply.
 
 <p align="center">
-  <img src="docs/media/full_pipeline_demo.png" alt="Full Pipeline Demo" width="95%"/>
+  <img src="output/full_pipeline_demo.gif" alt="Full Pipeline Demo" width="95%"/>
 </p>
 
 ---
@@ -54,7 +54,7 @@ An end-to-end multi-UAV reconnaissance and task allocation pipeline built on **R
       <br/><em>Fused target map — 4 color-coded zones with detected targets (numbered markers) published on <code>/scout/fused_map_image</code></em>
     </td>
     <td align="center" width="50%">
-      <img src="output/mrta_command_panel.png" alt="MRTA Command Panel" width="100%"/>
+      <img src="output/mrta_command_panel.gif" alt="MRTA Command Panel" width="100%"/>
       <br/><em>Full system running — Gazebo world, RViz markers, camera feeds and MRTA command panel side by side</em>
     </td>
   </tr>
@@ -309,11 +309,11 @@ python3 scripts/scenario_analysis.py
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="output/figures/01_gt_vs_detected_xy.png" alt="GT vs Detected" width="100%"/>
+      <img src="output/01_gt_vs_detected_xy.png" alt="GT vs Detected" width="100%"/>
       <br/><em>Ground Truth vs Detected (X & Y)</em>
     </td>
     <td align="center" width="50%">
-      <img src="output/figures/05_rmse_mean_per_scenario.png" alt="RMSE per Scenario" width="100%"/>
+      <img src="output/05_rmse_mean_per_scenario.png" alt="RMSE per Scenario" width="100%"/>
       <br/><em>Mean error & RMSE per scenario</em>
     </td>
   </tr>
