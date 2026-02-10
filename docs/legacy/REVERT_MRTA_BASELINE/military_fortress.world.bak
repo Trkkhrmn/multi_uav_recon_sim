@@ -1,0 +1,196 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+    <scene>
+      <sky>
+        <clouds>
+          <speed>0</speed>
+        </clouds>
+      </sky>
+      <ambient>0.7 0.7 0.7 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+
+    <physics name='default_physics' default='0' type='ode'>
+      <gravity>0 0 -9.8066</gravity>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>20</iters>
+          <sor>1.3</sor>
+          <use_dynamic_moi_rescaling>0</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>100</contact_max_correcting_vel>
+          <contact_surface_layer>0.001</contact_surface_layer>
+        </constraints>
+      </ode>
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+      <magnetic_field>6.0e-6 2.3e-5 -4.2e-5</magnetic_field>
+    </physics>
+
+    <!-- A global light source -->
+    <light type="directional" name="sun">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 200 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.9 0.9 0.9 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>0.2 0.2 -0.9</direction>
+    </light>
+    <!-- A ground plane -->
+<!--    <include>-->
+<!--      <static>true</static>-->
+<!--      <name>plane2</name>-->
+<!--      <pose>0 0 -10 0 0 0</pose>-->
+<!--      <uri>model://grass_plane</uri>-->
+<!--    </include>-->
+
+    <include>
+      <static>true</static>
+      <name>plane1</name>
+      <pose>3 -5 0 0 0 0</pose>
+      <uri>model://grass_plane</uri>
+    </include>
+    <include>
+      <static>true</static>
+      <name>plane2</name>
+      <pose>157.162918 19.521975 0 0 0 0</pose>
+      <uri>model://grass_plane</uri>
+    </include>
+
+    <include>
+      <static>true</static>
+      <pose>-35 -5 0 0 0 0</pose>
+      <uri>model://mili_map</uri>
+    </include>
+
+    <include>
+      <static>true</static>
+      <uri>model://mt_background</uri>
+    </include>
+
+    <!-- Mavi hedef küpler (uçak kırmızısı ile karışmaması için mavi) -->
+    <include>
+      <static>true</static>
+      <name>blue_cube_1</name>
+      <pose>15 28 0.5 0 0 0</pose>
+      <uri>model://blue_cube</uri>
+    </include>
+    <include>
+      <static>true</static>
+      <name>blue_cube_2</name>
+      <pose>45 20 0.5 0 0 0</pose>
+      <uri>model://blue_cube</uri>
+    </include>
+    <include>
+      <static>true</static>
+      <name>blue_cube_3</name>
+      <pose>30 -20 0.5 0 0 0</pose>
+      <uri>model://blue_cube</uri>
+    </include>
+    <include>
+      <static>true</static>
+      <name>blue_cube_4</name>
+      <pose>10 -35 0.5 0 0 0</pose>
+      <uri>model://blue_cube</uri>
+    </include>
+
+    <!-- Mavi hedef küpler (önceki ArUco koordinatları) -->
+    <include>
+      <static>true</static>
+      <name>blue_cube_5</name>
+      <pose>56.18 -40.37 0.5 0 0 0</pose>
+      <uri>model://blue_cube</uri>
+    </include>
+    <include>
+      <static>true</static>
+      <name>blue_cube_6</name>
+      <pose>55.85 30.28 0.5 0 0 0</pose>
+      <uri>model://blue_cube</uri>
+    </include>
+    <include>
+      <static>true</static>
+      <name>blue_cube_7</name>
+      <pose>7.15 49.63 0.5 0 0 0</pose>
+      <uri>model://blue_cube</uri>
+    </include>
+    <include>
+      <static>true</static>
+      <name>blue_cube_8</name>
+      <pose>11.71 -55.78 0.5 0 0 0</pose>
+      <uri>model://blue_cube</uri>
+    </include>
+
+    <road name="main_street">
+      <width>8</width>
+      <point>15 28.5 0.12</point>
+      <point>45 28.5 0.12</point>
+      <point>45 -38.5 0.12</point>
+      <point>10 -38.5 0.12</point>
+      <point>10 32.5 0.12</point>
+    </road>
+
+    <population name="oak_tree_population">
+      <model name="oak_trees_pop">
+        <include>
+          <static>true</static>
+          <uri>model://oak_tree</uri>
+        </include>
+      </model>
+      <pose>-35 -5 0 0 0 0</pose>
+      <box>
+        <size>78 148 0.01</size>
+      </box>
+      <model_count>8</model_count>
+      <distribution>
+        <type>random</type>
+      </distribution>
+    </population>
+
+    <population name="tree_population">
+      <model name="trees_pop">
+        <include>
+          <static>true</static>
+          <uri>model://pine_tree</uri>
+        </include>
+      </model>
+      <pose>-27 -5 0 0 0 0</pose>
+      <box>
+        <size>96 148 0.01</size>
+      </box>
+      <model_count>22</model_count>
+      <distribution>
+        <type>random</type>
+      </distribution>
+    </population>
+
+    <population name="fire_population">
+      <model name="fire">
+        <include>
+          <static>true</static>
+          <uri>model://fire</uri>
+        </include>
+      </model>
+      <pose>-45 -5 0 0 0 0</pose>
+      <box>
+        <size>60 145 0.01</size>
+      </box>
+      <model_count>20</model_count>
+      <distribution>
+        <type>random</type>
+      </distribution>
+    </population>
+
+  </world>
+</sdf>

@@ -1,0 +1,49 @@
+# -----------------------------------------------------------------------------
+# multi_uav_recon_ws — ROS 2 / colcon
+# -----------------------------------------------------------------------------
+
+# Colcon build artifacts
+build/
+install/
+log/
+
+# Workspace output (logs, recorded data, generated files)
+output/*
+!output/.gitkeep
+
+# 3rd party — do not embed in repo (install via README / setup.sh)
+src/px4_msgs/
+
+# Gazebo assets (often symlinks to local paths; create with setup_assets.sh)
+assets/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local / environment
+*.local
+.env
+.env.*

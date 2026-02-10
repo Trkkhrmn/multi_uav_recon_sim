@@ -1,0 +1,24 @@
+# MRTA: 6 iris worker drone — hedef atama, bırakma irtifasına alçalma, yük bırakma
+# Gazebo dünya: X=Doğu, Y=Kuzey. PX4 yerel NED: x=North, y=East, z=-Down
+# Akış: transit irtifa → hedef (x,y) → drop_altitude_m'ye alçal → yük bırak (spawn) → yüksel → yeni hedef / üsse dönüş
+
+mrta_node:
+  ros__parameters:
+    fused_targets_topic: "/scout/fused_targets"
+    transit_altitude_m: 50.0       # Hedefe bu irtifada uç
+    drop_altitude_m: 10.0          # Bu irtifaya alçalıp yük bırakılır (tam iniş yok)
+    drop_hover_after_s: 1.0        # Bıraktıktan sonra bu süre hover, sonra tekrar yüksel
+    acceptance_radius_xy_m: 3.0
+    acceptance_radius_alt_m: 2.0
+    start_delay_s: 5.0
+    task_done_delay_s: 5.0
+    spawn_entity_service: "/spawn_entity"
+    payload_sdf_path: ""
+    # MRTA görselleştirme (RViz + durum özeti)
+    publish_markers: true
+    markers_topic: "/mrta/markers"
+    status_topic: "/mrta/status"
+    marker_frame_id: "world"
+    worker_vehicle_ids: [5, 6, 7, 8, 9, 10]
+    worker_spawn_x_world: [183.41, 185.41, 187.41, 189.41, 191.41, 193.41]
+    worker_spawn_y_world: [54.52, 54.52, 54.52, 54.52, 54.52, 54.52]

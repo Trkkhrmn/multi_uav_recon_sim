@@ -1,0 +1,27 @@
+# MRTA: 6 iris workers — 3 target types (blue/green/red), packages per type (3/2/1), capacity and resupply
+# Workers: 2x 3 pkg (slow), 2x 2 pkg (mid), 2x 1 pkg (fast). Return to base when empty, 5 s per package resupply.
+
+mrta_node:
+  ros__parameters:
+    fused_targets_topic: "/scout/fused_targets"
+    transit_altitude_m: 50.0
+    drop_altitude_m: 10.0
+    drop_hover_after_s: 1.0
+    acceptance_radius_xy_m: 3.0
+    acceptance_radius_alt_m: 2.0
+    start_delay_s: 5.0
+    task_done_delay_s: 5.0
+    resupply_seconds_per_package: 5.0
+    spawn_entity_service: "/spawn_entity"
+    payload_sdf_path: ""
+    publish_markers: true
+    markers_topic: "/mrta/markers"
+    status_topic: "/mrta/status"
+    marker_frame_id: "world"
+    target_completed_topic: "/mrta/target_completed"
+    worker_vehicle_ids: [5, 6, 7, 8, 9, 10]
+    worker_spawn_x_world: [183.41, 185.41, 187.41, 189.41, 191.41, 193.41]
+    worker_spawn_y_world: [54.52, 54.52, 54.52, 54.52, 54.52, 54.52]
+    # 2x 3 pkg (slow), 2x 2 pkg (mid), 2x 1 pkg (fast)
+    worker_max_packages: [3, 3, 2, 2, 1, 1]
+    worker_speed_scale: [0.5, 0.5, 0.7, 0.7, 1.0, 1.0]

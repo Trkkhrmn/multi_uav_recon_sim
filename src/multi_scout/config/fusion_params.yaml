@@ -1,0 +1,30 @@
+# Central map fusion parameters
+
+fusion_node:
+  ros__parameters:
+    # Same target: detections within this radius (m) are merged. Smaller = more separate targets.
+    merge_radius_m: 4.0
+    # Only targets with at least this many observations get published. 1 = single-pass detections too.
+    min_observations: 1
+    # Enemy zone bounds (for filtering fusion output)
+    enemy_zone_min_x: -70.44
+    enemy_zone_max_x: 77.17
+    enemy_zone_min_y: -64.58
+    enemy_zone_max_y: 64.68
+    # Each drone's detection topic (PointStamped)
+    detection_topics:
+      - /scout/detections_1
+      - /scout/detections_2
+      - /scout/detections_3
+      - /scout/detections_4
+    # Fused target list (periodic)
+    output_topic: /scout/fused_targets
+    # Same list sent to center/MRTA (center node subscribes here)
+    center_topic: /scout/detected_targets_for_center
+    # Publish interval (seconds)
+    publish_interval_s: 2.0
+    # MarkerArray for fused targets in RViz
+    publish_markers: true
+    markers_topic: /scout/fused_targets_markers
+    # MRTA says enough packages dropped at this position
+    target_completed_topic: /mrta/target_completed

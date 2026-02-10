@@ -1,0 +1,57 @@
+# 4 scout drones: enemy zone split into 4 quadrants (X=0, Y=0 reference)
+# Gazebo world: X=East, Y=North
+# Each drone climbs to 50m, transits to zone centre, climbs to 80m, then holds (no scan for now)
+
+multi_scout:
+  ros__parameters:
+    num_drones: 4
+    full_zone:
+      min_x: -70.44
+      max_x: 77.17
+      min_y: -64.58
+      max_y: 64.68
+
+# Zone centre points (user calc):
+# 1 Top Right: (38.59, 32.34)  2 Top Left: (-35.22, 32.34)
+# 3 Bottom Left: (-35.22, -32.29)  4 Bottom Right: (38.59, -32.29)
+drones:
+  - vehicle_id: 1
+    spawn_x_world: 185.41
+    spawn_y_world: 56.52
+    # Zone 1 (Top Right) x: [0, 77.17], y: [0, 64.68]
+    scan_zone_world_min_x: 0.0
+    scan_zone_world_max_x: 77.17
+    scan_zone_world_min_y: 0.0
+    scan_zone_world_max_y: 64.68
+    zone_center_world_x: 38.59
+    zone_center_world_y: 32.34
+  - vehicle_id: 2
+    spawn_x_world: 189.41
+    spawn_y_world: 56.52
+    # Zone 2 (Top Left) x: [-70.44, 0], y: [0, 64.68]
+    scan_zone_world_min_x: -70.44
+    scan_zone_world_max_x: 0.0
+    scan_zone_world_min_y: 0.0
+    scan_zone_world_max_y: 64.68
+    zone_center_world_x: -35.22
+    zone_center_world_y: 32.34
+  - vehicle_id: 3
+    spawn_x_world: 189.41
+    spawn_y_world: 60.52
+    # Zone 3 (Bottom Left) x: [-70.44, 0], y: [-64.58, 0]
+    scan_zone_world_min_x: -70.44
+    scan_zone_world_max_x: 0.0
+    scan_zone_world_min_y: -64.58
+    scan_zone_world_max_y: 0.0
+    zone_center_world_x: -35.22
+    zone_center_world_y: -32.29
+  - vehicle_id: 4
+    spawn_x_world: 185.41
+    spawn_y_world: 60.52
+    # Zone 4 (Bottom Right) x: [0, 77.17], y: [-64.58, 0]
+    scan_zone_world_min_x: 0.0
+    scan_zone_world_max_x: 77.17
+    scan_zone_world_min_y: -64.58
+    scan_zone_world_max_y: 0.0
+    zone_center_world_x: 38.59
+    zone_center_world_y: -32.29
