@@ -40,7 +40,7 @@ An end-to-end multi-UAV reconnaissance and task allocation pipeline built on **R
 ## Demo
 
 <p align="center">
-  <img src="docs/media/gazebo_world.png" alt="Gazebo Simulation World" width="95%"/>
+  <img src="output/gazebo_world.png" alt="Gazebo Simulation World" width="95%"/>
 </p>
 
 <p align="center"><em>Gazebo simulation environment — military fortress with ground targets (blue, magenta, cyan cubes), tanks, buildings and mountainous terrain.</em></p>
@@ -50,11 +50,11 @@ An end-to-end multi-UAV reconnaissance and task allocation pipeline built on **R
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="docs/media/rviz_fused_targets.png" alt="Fused Target Map" width="100%"/>
+      <img src="output/rviz_fused_targets.png" alt="Fused Target Map" width="100%"/>
       <br/><em>Fused target map — 4 color-coded zones with detected targets (numbered markers) published on <code>/scout/fused_map_image</code></em>
     </td>
     <td align="center" width="50%">
-      <img src="docs/media/mrta_command_panel.png" alt="MRTA Command Panel" width="100%"/>
+      <img src="output/mrta_command_panel.png" alt="MRTA Command Panel" width="100%"/>
       <br/><em>Full system running — Gazebo world, RViz markers, camera feeds and MRTA command panel side by side</em>
     </td>
   </tr>
@@ -81,7 +81,7 @@ An end-to-end multi-UAV reconnaissance and task allocation pipeline built on **R
 ## System Architecture
 
 <p align="center">
-  <img src="docs/media/architecture_figure.png" alt="System Architecture" width="85%"/>
+  <img src="output/architecture_figure.png" alt="System Architecture" width="85%"/>
 </p>
 
 <p align="center"><em>Adaptive MRTA Framework — Multi-Layer Drone Swarm System Architecture</em></p>
@@ -158,7 +158,7 @@ Detections within `merge_radius` (e.g. 4 m) are treated as the same target; posi
 ### 7. Worker Drone State Machine
 
 <p align="center">
-  <img src="docs/media/worker_diagram.png" alt="Worker State Machine" width="75%"/>
+  <img src="output/worker_diagram.png" alt="Worker State Machine" width="75%"/>
 </p>
 
 <p align="center"><em>Worker drone state machine — from IDLE to DROP and back. If a new target is detected, the cycle repeats; otherwise the worker returns to base.</em></p>
@@ -309,32 +309,12 @@ python3 scripts/scenario_analysis.py
 <table>
   <tr>
     <td align="center" width="50%">
-      <img src="docs/media/figures/01_gt_vs_detected_xy.png" alt="GT vs Detected" width="100%"/>
+      <img src="output/figures/01_gt_vs_detected_xy.png" alt="GT vs Detected" width="100%"/>
       <br/><em>Ground Truth vs Detected (X & Y)</em>
     </td>
     <td align="center" width="50%">
-      <img src="docs/media/figures/02_error_vectors_2d.png" alt="Error Vectors" width="100%"/>
-      <br/><em>Position error vectors (GT → Detected)</em>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <img src="docs/media/figures/03_error_histogram.png" alt="Error Histogram" width="100%"/>
-      <br/><em>Euclidean error distribution</em>
-    </td>
-    <td align="center" width="50%">
-      <img src="docs/media/figures/04_error_by_scenario_boxplot.png" alt="Error Boxplot" width="100%"/>
-      <br/><em>Localization error by scenario</em>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <img src="docs/media/figures/05_rmse_mean_per_scenario.png" alt="RMSE per Scenario" width="100%"/>
+      <img src="output/figures/05_rmse_mean_per_scenario.png" alt="RMSE per Scenario" width="100%"/>
       <br/><em>Mean error & RMSE per scenario</em>
-    </td>
-    <td align="center" width="50%">
-      <img src="docs/media/figures/06_xy_error_by_scenario.png" alt="XY Error" width="100%"/>
-      <br/><em>X and Y component errors by scenario</em>
     </td>
   </tr>
 </table>
