@@ -29,7 +29,7 @@
 
 An end-to-end multi-UAV reconnaissance and task allocation pipeline built on **ROS 2**, **PX4 SITL** and **Gazebo Classic**. Ten autonomous drones operate in a simulated military environment — no real hardware required.
 
-**4 scout (leader) drones** fly to their assigned zones at 80 m altitude, detect colored ground targets using downward-facing cameras, and compute world coordinates via **pinhole camera model + ground-plane ray intersection**. A central **fusion node** merges detections from all four scouts using distance-based centroid averaging to produce a single, noise-filtered target map. **6 worker drones** are then assigned to those targets by an **MRTA (Multi-Robot Task Allocation)** node using a greedy nearest-first strategy. Each worker flies to its target, descends, drops a payload, and either proceeds to the next target or returns to base for resupply.
+4 scout (leader) drones fly to their assigned zones at 80 m altitude, detect colored ground targets using downward-facing cameras, and compute world coordinates via pinhole camera model + ground-plane ray intersection. A central fusion node merges detections from all four scouts using distance-based centroid averaging to produce a single, noise-filtered target map. 6 worker drones are then assigned to those targets by an MRTA (Multi-Robot Task Allocation) node using a greedy nearest-first strategy. Each worker flies to its target, descends, drops a payload, and either proceeds to the next target or returns to base for resupply.
 
 <p align="center">
   <img src="output/full_pipeline_demo.gif" alt="Full Pipeline Demo" width="95%"/>
