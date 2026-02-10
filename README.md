@@ -184,8 +184,8 @@ Detections within `merge_radius` (e.g. 4 m) are treated as the same target; posi
 
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/multi_uav_recon_ws.git
-cd multi_uav_recon_ws
+git clone https://github.com/<Trkkhrmn>/multi_uav_recon_sim.git
+cd multi_uav_recon_sim
 ```
 
 **2. Install PX4-Autopilot and initialize the Gazebo Classic submodule:**
