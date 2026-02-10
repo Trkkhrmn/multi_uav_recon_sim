@@ -393,24 +393,77 @@ Per-package READMEs are available at `src/<package_name>/README.md`.
 <details>
 <summary><strong>Academic references and sources</strong> (click to expand)</summary>
 
-### Camera Model & Projection
-1. **R. Hartley & A. Zisserman**, *Multiple View Geometry in Computer Vision*, 2nd ed., Cambridge University Press, 2003.
-2. **ROS image_geometry**, [PinholeCameraModel](https://docs.ros.org/en/api/image_geometry/html/python/)
+<br/>
 
-### Transforms (Quaternion, Coordinate Frames)
-3. **J. Diebel**, "Representing attitude: Euler angles, unit quaternions, and rotation vectors," Stanford University, 2006.
-4. **PX4 Development Guide**, [Coordinate Frames](https://docs.px4.io/main/en/coordinate_frames/README.html)
+### Camera Model, Projection & Geolocation
 
-### Multi-Robot Coverage
-5. **H. Choset**, "Coverage of known spaces: The boustrophedon cellular decomposition," *Autonomous Robots*, 9(3), 2000.
-6. **E. Galceran & M. Carreras**, "A survey on coverage path planning for robotics," *Robotics and Autonomous Systems*, 61(12), 2013.
+| # | Reference |
+|---|-----------|
+| 1 | **R. Hartley & A. Zisserman**, *Multiple View Geometry in Computer Vision*, 2nd ed., Cambridge University Press, 2003. — Pinhole model, intrinsics (K matrix), projection/unprojection, 3D reconstruction geometry (Ch. 6–8). |
+| 2 | **ROS image_geometry**, [PinholeCameraModel](https://docs.ros.org/en/api/image_geometry/html/python/) — `projectPixelTo3dRay()` and `fromCameraInfo()`; using K matrix from CameraInfo. |
+| 3 | **B. Dolph et al.**, "Optical Geolocation for Small Unmanned Aerial Systems," *AIAA SciTech Forum*, 2019. [NASA PDF](https://www.nasa.gov/wp-content/uploads/2024/04/2019-dolph-scitech-2019-1055-508-0.pdf) — Pinhole camera model for sUAS target geolocation with ground plane intersection, validated against RTK-GPS. |
+| 4 | **S. Gupte et al.**, "A Survey of Quadrotor Unmanned Aerial Vehicles," *IEEE International Conference on Emerging Trends in Computing*, 2012. — UAV sensing pipelines and camera-based localization techniques. |
 
-### Data Fusion
-7. **S. Thrun, W. Burgard, D. Fox**, *Probabilistic Robotics*, MIT Press, 2005.
+### Quaternion, Rotation & Coordinate Frames
 
-### Image Processing
-8. **R. Szeliski**, *Computer Vision: Algorithms and Applications*, 2nd ed., Springer, 2022.
-9. **OpenCV Documentation**, [Structural Analysis and Shape Descriptors](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html)
+| # | Reference |
+|---|-----------|
+| 5 | **J. Diebel**, "Representing Attitude: Euler Angles, Unit Quaternions, and Rotation Vectors," Stanford University, 2006. — Quaternion → rotation matrix, NED/body frames. |
+| 6 | **J. Solà**, "Quaternion Kinematics for the Error-State Kalman Filter," arXiv:1711.02508, 2017. — Comprehensive tutorial on quaternion algebra, rotation group, Lie structure, and IMU-based attitude estimation. |
+| 7 | **PX4 Development Guide**, [Coordinate Frames](https://docs.px4.io/main/en/coordinate_frames/README.html) — PX4 local NED (North–East–Down), `vehicle_local_position` and attitude conventions. |
+
+### Multi-Robot Coverage Path Planning
+
+| # | Reference |
+|---|-----------|
+| 8 | **H. Choset**, "Coverage of Known Spaces: The Boustrophedon Cellular Decomposition," *Autonomous Robots*, 9(3), pp. 247–253, 2000. — Foundational coverage path planning, area decomposition into cells. |
+| 9 | **E. Galceran & M. Carreras**, "A Survey on Coverage Path Planning for Robotics," *Robotics and Autonomous Systems*, 61(12), pp. 1258–1276, 2013. — Multi-robot coverage, zone assignment, lawnmower/back-and-forth strategies. |
+| 10 | **T. Cabreira, L. Brisolara & P. Ferreira**, "Survey on Coverage Path Planning with Unmanned Aerial Vehicles," *Drones*, 3(1), 4, 2019. [MDPI](https://www.mdpi.com/2504-446X/3/1/4) — UAV-specific CPP including exact/approximate decomposition, energy constraints. |
+| 11 | **A. Rahman et al.**, "A Survey on Multi-UAV Path Planning: Classification, Algorithms, Open Research Problems, and Future Directions," *Drones*, 9(4), 263, 2025. [MDPI](https://www.mdpi.com/2504-446X/9/4/263) — Metaheuristic, classical, ML, and hybrid multi-UAV path planning methods. |
+
+### Multi-Robot Task Allocation (MRTA)
+
+| # | Reference |
+|---|-----------|
+| 12 | **B. Gerkey & M. Matarić**, "A Formal Analysis and Taxonomy of Task Allocation in Multi-Robot Systems," *Int. Journal of Robotics Research*, 23(9), pp. 939–954, 2004. [SAGE](https://journals.sagepub.com/doi/10.1177/0278364904045564) — Foundational MRTA taxonomy (ST-SR-IA/ST-MR-IA/MT-SR-IA), reduction to Optimal Assignment Problem. |
+| 13 | **G. A. Korsah, A. Stentz & M. B. Dias**, "A Comprehensive Taxonomy for Multi-Robot Task Allocation," *Int. Journal of Robotics Research*, 32(12), pp. 1495–1512, 2013. [SAGE](https://journals.sagepub.com/doi/10.1177/0278364913496484) — iTax: extends Gerkey-Matarić to interrelated utilities, cross-schedule dependencies. |
+| 14 | **E. Nunes et al.**, "A Taxonomy for Task Allocation Problems with Temporal and Ordering Constraints," *Robotics and Autonomous Systems*, 90, pp. 55–70, 2017. — MRTA with temporal windows and ordering constraints. |
+| 15 | **A. Khamis, A. Hussein & A. Elmogy**, "Multi-Robot Task Allocation: A Review of the State-of-the-Art," *Cooperative Robots and Sensor Networks*, Springer, pp. 31–51, 2015. — Survey of auction-based, optimization-based, and market-based MRTA methods. |
+| 16 | **R. Machado et al.**, "Market Approaches to the Multi-Robot Task Allocation Problem: A Survey," *Journal of Intelligent & Robotic Systems*, 107, 2023. [Springer](https://link.springer.com/article/10.1007/s10846-022-01803-0) — Market-based MRTA methods, communication schemes, comparative studies. |
+| 17 | **M. Khosravian et al.**, "A Systematic Literature Review on Multi-Robot Task Allocation," *ACM Computing Surveys*, 2024. [ACM](https://dl.acm.org/doi/abs/10.1145/3700591) — Recent SLR synthesizing MRTA advances, uncertainty handling, and coordination techniques. |
+
+### Sensor Fusion & Multi-Robot Detection
+
+| # | Reference |
+|---|-----------|
+| 18 | **S. Thrun, W. Burgard & D. Fox**, *Probabilistic Robotics*, MIT Press, 2005. — Sensor fusion, position estimation from multiple observations, centroid/average fusion (Ch. 4, 6). |
+| 19 | **G. Hollinger & S. Yerramalli**, "Distributed Data Fusion for Multirobot Search," *IEEE Transactions on Robotics*, 2015. — Distributed data fusion methods for merging position estimates from multiple vehicles. |
+| 20 | **A. Stroupe, M. Martin & T. Balch**, "Merging Gaussian Distributions for Object Localization in Multi-Robot Systems," *ISER*, 2000. — Fusing distributed observations using re-parameterized 2D Gaussians; centroid merging for multi-observer systems. |
+
+### Image Processing & Color-Based Detection
+
+| # | Reference |
+|---|-----------|
+| 21 | **R. Szeliski**, *Computer Vision: Algorithms and Applications*, 2nd ed., Springer, 2022. — HSV color segmentation, contour analysis, image moments (Ch. 3, 7). |
+| 22 | **OpenCV Documentation**, [Structural Analysis and Shape Descriptors](https://docs.opencv.org/4.x/d3/dc0/group__imgproc__shape.html) — `cv2.moments()`, `contourArea()`, centroid calculation. |
+| 23 | **Y.-C. Lin et al.**, "Techniques for Improving Color Segmentation in the Task of Identifying Objects on Aerial Images," *IEEE*, 2019. [IEEE](https://ieeexplore.ieee.org/document/8711891) — Color segmentation techniques for UAV aerial imagery, HSV preprocessing. |
+
+### UAV Autonomy & State Machines
+
+| # | Reference |
+|---|-----------|
+| 24 | **L. Deng et al.**, "Finite State Machines-Based Path-Following Collaborative Computing Strategy for Emergency UAV Swarms," arXiv:2407.11531, 2024. — FSM-based UAV swarm path following, Extended FSM models for resource management. |
+| 25 | **C. Cardeira et al.**, "Intelligent Swarm: Concept, Design and Validation of Self-Organized UAVs Based on Leader–Followers Paradigm," *Drones*, 8(10), 575, 2024. [MDPI](https://www.mdpi.com/2504-446X/8/10/575) — Leader-follower UAV swarm architecture, autonomous mission planning. |
+
+### Simulation & Middleware
+
+| # | Reference |
+|---|-----------|
+| 26 | **L. Meier et al.**, "PX4: A Node-Based Multithreaded Open Source Robotics Framework for Deeply Embedded Platforms," *IEEE ICRA Workshop on Open Source Software*, 2015. — PX4 autopilot architecture, SITL simulation framework. |
+| 27 | **N. Koenig & A. Howard**, "Design and Use Paradigms for Gazebo, An Open-Source Multi-Robot Simulator," *IEEE/RSJ IROS*, pp. 2149–2154, 2004. — Gazebo simulator design, physics engine, sensor simulation. |
+| 28 | **PX4 Documentation**, [Multi-Vehicle Simulation with Gazebo Classic](https://docs.px4.io/main/en/sim_gazebo_classic/multi_vehicle_simulation.html) — Multi-instance PX4 SITL with Gazebo Classic, namespace management. |
+| 29 | **PX4 Documentation**, [uXRCE-DDS (PX4-ROS 2/DDS Bridge)](https://docs.px4.io/main/en/middleware/uxrce_dds.html) — Micro XRCE-DDS agent/client architecture, PX4 ↔ ROS 2 communication bridge. |
+| 30 | **S. Macenski et al.**, "Robot Operating System 2: Design, Architecture, and Uses in the Wild," *Science Robotics*, 7(66), 2022. — ROS 2 architecture, DDS middleware, real-time capabilities. |
 
 </details>
 
